@@ -19,38 +19,36 @@ private static ResultSet reSet;
         String url = "JDBC:mysql://localhost:3306/jdbcclasses";
         String userName="root";
         String Password="Sanju@71";
-        try {
-			         connection= DriverManager.getConnection(url, userName, Password);
-			            do {
-			            	   System.out.println("select the Query Number u want to Execute 1:Insert, 2:Update, 3:Delete,4:Select, 5:Exit..... ");
-			            	   int num = scan.nextInt();
-			            	         if(num==1) {
-			            	         	  Insert();
-			            	         }else if (num==2) {
-			            	            Update();
-			            	         }else if (num==3) {
-			            	        	 Delete();
-			            	         }else if (num==4) {
-			            	                 Select();
-			            	         } else {
-			            	                     System.out.println("Exit CURD Operations....");
-			            	         }
-			            	        	  System.out.println("Do u want to Continue CURD operations: Yes /No??");
-						} while ( scan.next().equalsIgnoreCase("Yes") );
-			            System.out.println("Exit CURD operations...");
-			            	
-              }
+	        try {
+		 connection= DriverManager.getConnection(url, userName, Password);
+		    do {
+			   System.out.println("select the Query Number u want to Execute 1:Insert, 2:Update, 3:Delete,4:Select, 5:Exit..... ");
+      int num = scan.nextInt();
+	      if(num==1) {
+			  Insert();
+		 }else if (num==2) {
+		    Update();
+		 }else if (num==3) {
+			 Delete();
+		 }else if (num==4) {
+			 Select();
+		 } else {
+			     System.out.println("Exit CURD Operations....");
+		 }
+			  System.out.println("Do u want to Continue CURD operations: Yes /No??");
+		} while ( scan.next().equalsIgnoreCase("Yes") );
+    System.out.println("Exit CURD operations...");
+			
+}
 
-		 catch (SQLException e) {
-			e.printStackTrace();
-		  }
-        finally {
-     	   CloseAll_P6();
-		}
-	}
-      
-	
-	
+catch (SQLException e) {
+e.printStackTrace();
+}
+finally {
+CloseAll_P6();
+}
+}
+
         static void Insert() throws SQLException { 
 		 String S1= "insert into employee (`Id,`Name`,`Email`,`Department`,`salary`)values(?,?,?,?,?)";
 		 prepStat= connection.prepareStatement(S1);
